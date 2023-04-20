@@ -41,3 +41,9 @@ end
 
 perform(doc,townhall_urls)
 
+def test_connection
+  doc = Nokogiri::HTML(URI.open('http://annuaire-des-mairies.com/val-d-oise.html'))
+  doc.xpath('//a[contains(@class,"lientxt")][1]').each do  |scrapped_url|
+  return scrapped_url.text
+  end
+end

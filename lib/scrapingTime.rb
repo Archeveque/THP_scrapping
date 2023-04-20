@@ -74,4 +74,9 @@ end
 
 menu(doc,crypto_names,crypto_values)
 
-
+def test_crypto_name
+  page = Nokogiri::HTML(URI.open("https://coinmarketcap.com/all/views/all/"))
+page.xpath('//a[contains(@class,"cmc-table__column-name--name cmc-link")]').each do |crypto_name|
+  return crypto_name.text
+end
+end
