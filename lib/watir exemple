@@ -1,0 +1,14 @@
+browser = Watir::Browser.new :chrome
+browser.goto("https://coinmarketcap.com/all/views/all/")
+
+#Envoie des keys a la page (ici, envoie des spaces pour scroll la page)
+16.times do
+  browser.send_keys(:space)
+  sleep 0.1
+end
+
+# Parse la page
+
+doc = Nokogiri::HTML.parse(browser.html)
+crypto_values = []
+crypto_names =[]
